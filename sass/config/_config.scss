@@ -1,0 +1,31 @@
+:root {
+	@each $value, $weight in $font-weights {
+		--fw-#{$value}: #{$weight};
+	}
+
+	@each $type, $name in $font-families {
+		--ff-#{$type}: "#{$name}", sans-serif;
+	}
+	--transition-time: 175ms;
+}
+
+:root[data-theme="dark"] {
+	@each $type, $shades in $colors-dark {
+		@each $intensity, $color in $shades {
+			--clr-#{$type}-#{$intensity}: #{$color};
+		}
+	}
+	--clr-shadow: rgba(0, 0, 0, 0.349);
+	--bg-desktop: url(../images/bg-desktop-dark.jpg);
+	--bg-mobile: url(../images/bg-mobile-dark.jpg);
+}
+:root[data-theme="light"] {
+	@each $type, $shades in $colors-light {
+		@each $intensity, $color in $shades {
+			--clr-#{$type}-#{$intensity}: #{$color};
+		}
+	}
+	--clr-shadow: rgba(50, 50, 50, 0.301);
+	--bg-desktop: url(../images/bg-desktop-light.jpg);
+	--bg-mobile: url(../images/bg-mobile-light.jpg);
+}

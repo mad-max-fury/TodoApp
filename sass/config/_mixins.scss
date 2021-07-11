@@ -1,0 +1,25 @@
+@use "sass:map";
+
+@mixin mq($key) {
+	$size: map.get($breakpoints, $key);
+	@media (max-width: $size) {
+		@content;
+	}
+}
+
+@mixin pseudo($type) {
+	position: relative;
+
+	&::#{$type} {
+		position: absolute;
+		content: "";
+		@content;
+	}
+}
+
+@mixin rounded($top: 0, $right: 0, $bottom: 0, $left: 0) {
+	border-top-left-radius: #{$top}rem;
+	border-top-right-radius: #{$right}rem;
+	border-bottom-right-radius: #{$bottom}rem;
+	border-bottom-left-radius: #{$left}rem;
+}

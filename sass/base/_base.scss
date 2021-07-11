@@ -1,0 +1,23 @@
+body {
+	min-height: 100vh;
+	text-rendering: optimizeSpeed;
+	line-height: 1.5;
+	background: top/contain no-repeat var(--bg-desktop) var(--clr-neutral-700);
+	padding-top: 5rem;
+	font-family: var(--ff-main);
+	font-size: 18px;
+	display: flex;
+	justify-content: center;
+	@include mq(small) {
+		background-image: var(--bg-mobile);
+		padding-top: 2rem;
+	}
+}
+
+main {
+	flex-basis: 30rem;
+
+	@include mq(small) {
+		flex-basis: 90%;
+	}
+}

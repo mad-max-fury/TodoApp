@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<!-- displays site properly based on user's device -->
+
+	<link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png" />
+
+	<title>Frontend Mentor | Todo app</title>
+
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+	<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap" rel="stylesheet" />
+
+	<link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+	<main>
+		<header class="header">
+			<h1 class="header__logo">todo</h1>
+			<img src="images/icon-sun.svg" alt="Light Mode" class="header__btn" />
+		</header>
+		<section class="todo">
+			<div class="todo__input">
+				<button class="todo_circle" id="todobtn2"></button>
+				<input type="text" placeholder="Create a new todo..." class="todo__create" />
+			</div>
+			<ul class="todo__list" role="list"></ul>
+			<div class="todo__footer">
+				<div>
+					<p class="todo__count">0 items left</p>
+				</div>
+				<div class="todo__buttons">
+					<button class="todo__button selected all">All</button><button
+						class="todo__button active">Active</button><button class="todo__button completed">Completed</button>
+				</div>
+				<div><button class="todo__button clear">Clear Completed</button></div>
+			</div>
+		</section>
+	</main>
+	<script src="js/main.js"></script>
+</body>
+
+</html>

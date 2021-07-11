@@ -1,0 +1,166 @@
+.todo {
+  &__input {
+    padding: 1em 0.5em;
+    background-color: var(--clr-neutral-600);
+    @include rounded(0.3, 0.3, 0.3, 0.3);
+    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: row;
+  }
+  &_circle {
+    width: 20px;
+    height: 20px;
+    border: 1px solid var(--clr-neutral-300);
+    border-radius: 50%;
+    cursor: pointer;
+  }
+
+  &__create {
+    background: none;
+    border: 1px solid yellow;
+    width: 0%;
+    color: var(--clr-neutral-200);
+
+    &:focus {
+      outline: 0;
+    }
+
+    &::placeholder {
+      color: var(--clr-neutral-200);
+    }
+  }
+
+  &__list {
+    background-color: var(--clr-neutral-600);
+    box-shadow: 0px -10px 23px -3px var(--clr-shadow);
+    @include rounded(0.3, 0.3, 0, 0);
+  }
+
+  &__item {
+    padding: 1em 1.5em;
+    color: var(--clr-neutral-200);
+    border-bottom: 1px solid var(--clr-neutral-300);
+    display: flex;
+    align-items: center;
+    gap: 1em;
+
+    &:hover .todo__close {
+      transform: scale(1);
+    }
+  }
+
+  &__checkbox {
+    width: 20px;
+    height: 20px;
+    border: 1px solid var(--clr-neutral-300);
+    border-radius: 50%;
+    cursor: pointer;
+    position: relative;
+    background-size: 500%;
+    transition: background-size var(--transition-time)
+      cubic-bezier(0, 0, 0.36, 0.93);
+  }
+
+  &__check {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 60%;
+    transform: translate(-50%, -50%);
+    display: none;
+  }
+
+  &__text {
+    transition: color var(--transition-time) ease-in;
+
+    @include pseudo(after) {
+      width: 100%;
+      top: calc(50% - 0.5px);
+      left: 0;
+      height: 1px;
+      background-color: var(--clr-neutral-300);
+      transform: scale(0);
+      transition: transform var(--transition-time) ease-in;
+      transform-origin: left;
+    }
+  }
+
+  &__close {
+    margin-left: auto;
+    cursor: pointer;
+    transform: scale(0);
+    transition: transform var(--transition-time) ease;
+    transform-origin: right;
+
+    &:hover path {
+      fill: rgb(255, 36, 36);
+    }
+  }
+
+  &__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1em 1.5em;
+    color: var(--clr-neutral-300);
+    font-size: 0.9rem;
+    font-weight: var(--fw-bold);
+    background-color: var(--clr-neutral-600);
+    box-shadow: 0px 10px 23px -3px var(--clr-shadow);
+    @include rounded(0, 0, 0.3, 0.3);
+
+    @include mq(small) {
+      display: grid;
+      grid-template-rows: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+      row-gap: 1rem;
+
+      > div:last-child {
+        text-align: right;
+      }
+    }
+  }
+
+  &__buttons {
+    @include mq(small) {
+      grid-row: 2 / 3;
+      grid-column: 1 / 3;
+      justify-self: center;
+    }
+  }
+
+  &__button {
+    background: none;
+    border: 0;
+    color: inherit;
+    cursor: pointer;
+    transition: color 175ms linear;
+
+    &:hover {
+      color: var(--clr-neutral-200);
+    }
+
+    &.selected {
+      color: var(--clr-primary-100);
+    }
+  }
+}
+
+.todo__item.checked .todo__text {
+  color: var(--clr-neutral-300);
+  @include pseudo(after) {
+    transform: scale(1);
+  }
+}
+.todo__item.checked .todo__checkbox {
+  background-image: linear-gradient(
+    135deg,
+    var(--clr-gradient-1),
+    var(--clr-gradient-2)
+  );
+  border: 0;
+  background-size: 100%;
+}
+.todo__item.checked .todo__check {
+  display: block;
+}
